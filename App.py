@@ -1,15 +1,11 @@
 import streamlit as st
 from transformers import pipeline
-
 @st.cache_resource
 def load_summarizer():
   return pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
-  summarizer = load_summarizer()
-
-#streamlit UI
-st.title("EVO AI Text Summarizer")
+summarizer = load_summarizer()
+st.title("AI Text Summarizer")
 st.write("Enter a long text below, and get a concise summary!")
-#Text Input
 long_text = st.text_area("Enter text to Summarize:", height=200)
 max_length = st.slider("Max Summary Length", min_value=50, max_value=300, value=130)
 min_length = st.slider("Min Summary Length", min_value=20, max_value=100, value=30)
